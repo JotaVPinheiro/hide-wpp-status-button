@@ -15,6 +15,6 @@ const statusToggleButton = document.querySelector("#statusToggleButton");
 
 statusToggleButton.onchange = onChange;
 
-chrome.storage.local.get(["checked"], (result) => {
-  statusToggleButton.checked = result.checked;
+chrome.storage.local.get(["checked"], ({ checked }) => {
+  statusToggleButton.checked = checked;
 });
