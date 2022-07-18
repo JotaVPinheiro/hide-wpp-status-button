@@ -1,11 +1,13 @@
 const gotMessage = (message, sender, sendResponse) => {
-  if (message.checked === true)
-    document.querySelector("._2cNrC").style.display = "none";
+  const displayStates = {
+    false: "",
+    true: "none",
+  };
 
-  if (message.checked === false)
-    document.querySelector("._2cNrC").style.display = "";
+  if (message.checked !== undefined) {
+    const statusButton = document.querySelector("._2cNrC");
+    statusButton.style.display = displayStates[message.checked];
+  }
 };
 
 chrome.runtime.onMessage.addListener(gotMessage);
-
-document.querySelector("._2cNrC").style.display = "none";
