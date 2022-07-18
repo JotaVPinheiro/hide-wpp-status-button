@@ -1,6 +1,6 @@
 {
-  "name": "Hide Status Icon",
-  "description": "Hide WhatsApp status icon.",
+  "name": "Hide Status Button",
+  "description": "Hide WhatsApp status button.",
   "version": "0.1.0",
   "manifest_version": 2,
   "background": {
