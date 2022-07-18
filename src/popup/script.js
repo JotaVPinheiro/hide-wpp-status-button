@@ -1,5 +1,5 @@
 const onChange = (event) => {
-  const checked = event.target.checked;
+  const { checked } = event.target;
 
   let queryOptions = { active: true, lastFocusedWindow: true };
   chrome.tabs.query(queryOptions, (tabs) => {
@@ -7,8 +7,14 @@ const onChange = (event) => {
       chrome.tabs.sendMessage(tabs[0].id, { checked });
     }
   });
+
+  chrome.storage.local.set({ checked });
 };
 
 const statusToggleButton = document.querySelector("#statusToggleButton");
 
 statusToggleButton.onchange = onChange;
+
+chrome.storage.local.get(["checked"], (result) => {
+  statusToggleButton.checked = result.checked;
+});
