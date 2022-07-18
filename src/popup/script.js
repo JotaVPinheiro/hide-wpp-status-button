@@ -1,5 +1,12 @@
 const onChange = (event) => {
-  console.log(event.target.checked);
+  const checked = event.target.checked;
+
+  let queryOptions = { active: true, lastFocusedWindow: true };
+  chrome.tabs.query(queryOptions, (tabs) => {
+    if (tabs[0].url == "https://web.whatsapp.com/") {
+      chrome.tabs.sendMessage(tabs[0].id, { checked });
+    }
+  });
 };
 
 const statusToggleButton = document.querySelector("#statusToggleButton");
